@@ -60,7 +60,7 @@ class HomepageState extends State<Homepage> {
                     Navigator.pushReplacement(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Friendpage(),
+                        builder: (context) => Friendpage(user: user),
                       ),
                     );
                   },
