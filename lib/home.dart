@@ -85,7 +85,9 @@ class HomepageState extends State<Homepage> {
                 ),
            RaisedButton(
                   child: Text("SIGN OUT"),
-                  onPressed: () {
+                  onPressed: () async {
+                    final prefs = await SharedPreferences.getInstance();
+                    prefs.clear();
                     Navigator.pushReplacementNamed(context, '/');
                   },
                   color: Color(0xff78909C)
