@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter Demo',
       debugShowCheckedModeBanner: true,
       theme: ThemeData(
-        primaryColor: Color(0xff00796b),
+        primaryColor: Color(0xff78909C),
       ),
       initialRoute: "/",
       routes: {

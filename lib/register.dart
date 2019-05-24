@@ -136,7 +136,7 @@ class LoginpageState extends State<Register> {
                   margin: const EdgeInsets.only(top: 20),
                   child: RaisedButton(
                     child: Text('REGISTER NEW ACCOUNT'),
-                    color: Theme.of(context).accentColor,
+                    color: Color(0xff78909C),
                     splashColor: Colors.blue,
                     onPressed: () {
                         bool check = true;

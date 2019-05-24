@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 // import './todo.dart';
 import './model/user.dart';
 import './friend.dart';
+import './todo.dart';
 
 class FriendInfopage extends StatefulWidget {
   int id;
@@ -44,15 +45,15 @@ class FriendInfopageState extends State<FriendInfopage> {
                   flex: 1,
                   child: RaisedButton(
                     child: Text("TODOS"),
-                    // onPressed: () {
-                    //   Navigator.pushReplacement(
-                    //     context,
-                    //     MaterialPageRoute(
-                    //       builder: (context) =>
-                    //           TodoScreen(id: id, name: name, user: myself),
-                    //     ),
-                    //   );
-                    // },
+                    onPressed: () {
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) =>
+                             TodoScreen(id: id, name: name, user: myself),
+                        ),
+                      );
+                    },
                   ),
                 ),
               ],

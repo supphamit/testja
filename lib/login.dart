@@ -3,6 +3,7 @@ import 'register.dart';
 import 'home.dart';
 import 'model/user.dart';
 import 'package:toast/toast.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
   @override
@@ -34,7 +35,12 @@ class LoginpageState extends State<Login> {
       });
     });
   }
+
+
+  SharedPreferences prefs;
+
    @override
+   
   Widget build(BuildContext context) {
     return Scaffold(
       appBar:AppBar(
@@ -80,11 +86,14 @@ class LoginpageState extends State<Login> {
                Container(
                     child: RaisedButton(
                       child: Text("sign in"),
-                      onPressed: () {
+                      onPressed: () async{
                         if (_formkey.currentState.validate()) {
                           for (int i = 0; i < currentUsers.length; i++) {
                             if (userid.text == currentUsers[i].userid &&
                                 password.text == currentUsers[i].password) {
+                                  prefs = await SharedPreferences.getInstance();
+                                  await prefs.setString('name', currentUsers[i].name);
+                                  
                               Navigator.pushReplacement(
                                 context,
                                 MaterialPageRoute(
@@ -96,6 +105,8 @@ class LoginpageState extends State<Login> {
                           }
                         }
                       },
+                      color: Color(0xff78909C)
+                      ,
                     ),
                 
               ),

@@ -52,14 +52,14 @@ class ProfilepageState extends State<Profilepage> {
                   decoration: InputDecoration(labelText: "User Id"),
                   validator: (value) {
                     if (value.length < 6 || value.length > 12)
-                      return "Userid must be 6-12 character";
+                      return "Userid 6-12 character";
                   },
                 ),
                 TextFormField(
                   controller: name,
                   decoration: InputDecoration(
                     labelText: "Name",
-                    hintText: "John Wick",
+                    hintText: "Name",
                   ),
                   validator: (value) {
                     int count = 0;
@@ -133,6 +133,7 @@ class ProfilepageState extends State<Profilepage> {
                             });
                           }
                         },
+                        color: Color(0xff78909C)
                       ),
                     )
                   ],

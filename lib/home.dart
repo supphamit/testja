@@ -4,6 +4,7 @@ import 'login.dart';
 import 'profile.dart';
 import 'friend.dart';
 import 'model/user.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 class Homepage extends StatefulWidget {
   final User user;
   Homepage({Key key, this.user}) : super(key: key);
@@ -15,8 +16,22 @@ class Homepage extends StatefulWidget {
 }
 
 class HomepageState extends State<Homepage> {
+  SharedPreferences prefs;
+  String name= "";
   
-  
+  @override
+  void initState() {
+    super.initState();
+    readLocal();
+  }
+  void readLocal() async {
+    prefs = await SharedPreferences.getInstance();
+    name = prefs.getString('name' ?? '');
+
+    // Force refresh input
+    setState(() {});
+  }
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build
@@ -36,13 +51,14 @@ class HomepageState extends State<Homepage> {
           children: <Widget>[
             ListTile(
                   title: Text(
-                    'Hello ${user.name}',
+                    "Hello "+ name,
                     style: new TextStyle(
                       fontSize: 20.0,
                     ),
                   ),
                   subtitle: Text('this is my quote  "${user.quote}"'),
                 ),
+            
             RaisedButton(
                   child: Text("PROFILE SETUP"),
                   onPressed: () {
@@ -53,6 +69,7 @@ class HomepageState extends State<Homepage> {
                       ),
                     );
                   },
+                  color: Color(0xff78909C)
                 ),
             RaisedButton(
                   child: Text("MY FRIENDS"),
@@ -64,12 +81,14 @@ class HomepageState extends State<Homepage> {
                       ),
                     );
                   },
+                  color: Color(0xff78909C)
                 ),
            RaisedButton(
                   child: Text("SIGN OUT"),
                   onPressed: () {
                     Navigator.pushReplacementNamed(context, '/');
                   },
+                  color: Color(0xff78909C)
                 )
           ] 
         ),
